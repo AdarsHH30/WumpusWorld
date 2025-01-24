@@ -4,9 +4,17 @@ import random as Random
 #one 2 random number will be generated from 1 to gridSize which is the location of the wumpus then from there the surrounding will the the Stench
 #shoot,move
 
+
+WUMPUS="wumpus"
+PIT="pit"
+STENCH="stench"
+BREEZE="breeze"
+GLITTER="glitter"
+
 class World:
 
-    gridSize=int(input("Enter World Size :")) 
+    # gridSize=int(input("Enter World Size :")) 
+    gridSize=4 
 
     def __init__(self):
         self.world = [["" for _ in range(self.gridSize)] for _ in range(self.gridSize)]
@@ -26,16 +34,16 @@ class World:
         for i in range(noPit):
             row=Random.randrange(1,self.gridSize)
             col=Random.randrange(1,self.gridSize)
-            if self.world[row][col]!="👾" and self.world[row][col]!="Gold" and self.world[row][col]!="Pit":
-                self.world[row][col]="Pit"
-                self.place(row,col,"༄")
+            if self.world[row][col]!=WUMPUS and self.world[row][col]!=GLITTER and self.world[row][col]!=PIT:
+                self.world[row][col]=PIT
+                self.place(row,col,BREEZE)
             i-=1
         
     def goldSpawn(self):
         row=Random.randrange(1,self.gridSize)
         col=Random.randrange(1,self.gridSize)
-        if self.world[row][col]!="👾" and self.world[row][col]!="Pit":
-            self.world[row][col]="°˖✧"
+        if self.world[row][col]!=WUMPUS and self.world[row][col]!=PIT:
+            self.world[row][col]=GLITTER
         self.pitSpawn()
     
     def wumpusSpawn(self):
@@ -44,10 +52,10 @@ class World:
             row=Random.randrange(1,self.gridSize)
             col=Random.randrange(1,self.gridSize)
             if (row!=1 or col!=0 ) and (row!=0 or col!=1):
-                self.world[row][col]="👾"
+                self.world[row][col]=WUMPUS
                 wumpusCount-=1
 
-        self.place(row,col,"♨")
+        self.place(row,col,STENCH)
         self.goldSpawn()
 
     def returnMap(self):
@@ -61,7 +69,9 @@ class World:
             print(i)
    
 
-if __name__=="__main__":
-    obj=World()
-    val=obj.returnMap()
-    obj.printGrid()
+# if __name__=="__main__":
+#     obj=World()
+#     val=obj.returnMap()
+#     obj.printGrid()
+
+    
