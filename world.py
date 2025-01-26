@@ -5,13 +5,13 @@ import random as Random
 # one 2 random number will be generated from 1 to gridSize which is the location of the wumpus then from there the surrounding will the the Stench
 # shoot,move
 
-
-WUMPUS = "👻"
-PIT = "🕳️"
-STENCH = "💨"
+# "(@-@)".center(5)
+WUMPUS = "👾".center(5)
+PIT = "(0)"
+STENCH = "~"
 BREEZE = "༄"
-GLITTER = "💰"
-agent = "🤖"
+GLITTER = "$"
+agent = "('0')".center(5)
 
 
 class World:
@@ -81,23 +81,39 @@ class World:
         # # print(var)
         return self.world, self.gridSize
 
-    def resizeMap(self):
-        for i in range(self.gridSize):
-            for j in range(self.gridSize):
-                if len(self.world[i][j]) == 2:
-                    self.world[i][j] += " "
-                elif len(self.world[i][j]) == 1:
-                    self.world[i][j] = " " + self.world[i][j] + " "
-                elif not len(self.world[i][j]):
-                    self.world[i][j] = "  "
-
+    # def resizeMap(self):
+    #     for i in range(self.gridSize):
+    #         for j in range(self.gridSize):
+    #             if len(self.world[i][j]) == 2:
+    #                 self.world[i][j] += " "
+    #             elif len(self.world[i][j]) == 1:
+    #                 self.world[i][j] = " " + self.world[i][j] + " "
+    #             elif not len(self.world[i][j]):
+    #                 self.world[i][j] = "  "
     def printGrid(self):
-        self.resizeMap()
-        for i in self.world:
-            print(i)
+        print("--" * 20)
+        for i in range(self.gridSize):
+            print("|", end="")
+            for j in range(self.gridSize):
+                # val = 5 - len(self.world[i][j])
+                val = self.world[i][j]
+                padded = val.center(5)
+                # padding = f"{self.world[i][j]:<3}"
+                # padded = f"{padding:>2}"
+                self.world[i][j] = padded
+                print(padded, end=" | ")
+            print("\n", "--" * 20)
+
+    # def printGrid(self):
+    #     # self.resizeMap()
+    #     for i in range(len(self.world)):
+    #         for j in range(len(self.world)):
+    #             print(self.world[i][j], end=" ")
+    #         print("\n")
 
 
 if __name__ == "__main__":
     obj = World()
     obj.wumpusSpawn()
+    # obj.resizeMap()
     obj.printGrid()
