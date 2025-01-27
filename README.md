@@ -32,7 +32,7 @@ To get started with the Wumpus World project, follow these steps:
 1. **Clone the Repository**: Clone the project repository to your local machine using the following command:
 
    ```bash
-   git clone https://github.com/yourusername/WumpusWorld.git
+   git clone https://github.com/AdarsHH30/WumpusWorld.git
    ```
 
 2. **Navigate to the Project Directory**: Change to the project directory:
