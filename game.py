@@ -85,7 +85,7 @@ class Game:
         elif WUMPUS in currentVal:
             # self.endGameMessage("AGENT IS KILLED BY WUMPUS...:(")
             subprocess.run("clear")
-            f = open("public/deadbywumpus.txt", "r")
+            f = open("public/killedBywumpus.txt", "r")
             print(f.read())
 
             self.quitAndDIsplay(0, 0)
