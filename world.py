@@ -1,17 +1,14 @@
 import random as Random
 
-# gridSize*gridSize grid which is world
-# 0,0 where the Agent will start the game
-# one 2 random number will be generated from 1 to gridSize which is the location of the wumpus then from there the surrounding will the the Stench
-# shoot,move
 
 # "(@-@)".center(5)
-WUMPUS = "👾".center(5)
-PIT = "(0)"
-STENCH = "~"
+WUMPUS = "(*O*)".center(5)
+PIT = "🕳"
+STENCH = "∿∿"
 BREEZE = "༄"
-GLITTER = "$"
-agent = "('0')".center(5)
+GLITTER = "﹩"
+agent = "[OxO]".center(5)
+DEADWUMPUS = "(XoX)".center(5)
 
 
 class World:
@@ -96,6 +93,7 @@ class World:
             print("|", end="")
             for j in range(self.gridSize):
                 # val = 5 - len(self.world[i][j])
+
                 val = self.world[i][j]
                 padded = val.center(5)
                 # padding = f"{self.world[i][j]:<3}"
